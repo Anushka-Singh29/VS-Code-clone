@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+  <div id="main">
+    <div id="left">
+      <div id="heading">
+        <h3>Explorer</h3><i class="ri-more-fill"></i>
+      </div>
+
+      <div id="namee">
+        <h4>NewVSCode</h4>
+         <div id="icons">
+          <i id="fileicon" class="ri-file-4-line"></i>
+          <i id="foldericon" class="ri-folder-open-line"></i>
+       <a href="/"><i id="reicn" class="ri-restart-line"> </i></a>
+        <i class="ri-delete-bin-line"></i>
+         </div>
+        
+      </div>
+
+      <div id="data">
+
+        <div class="forms">
+          <form id="fileform" action="/createfile"><input type="text" name="name" placeholder="filename"></form>
+          <form id="folderform" action="/createfolder"><input type="text" name="name" placeholder="foldername"></form>
+        </div>
+     
+      
+        <div id="filesdupe">
+          <% filesdupe.forEach(function(filesdupe){ %>
+            <% if(filesdupe.folderhaikya===true){ %>
+              <div id="folderdiv">
+                <h4><i id class="ri-folder-line"></i> <%= filesdupe.name %></h4><div id="ficn"><i class="ri-pencil-line"></i>
+                  <a href="/deletefolder/<%= filesdupe.name %>"><i class="ri-delete-bin-line"></i></div></a>
+       
+              </div>
+            <% } else {%>       
+          <div id="filediv">
+          <a href="/file/<%= filesdupe.name %>">  <h4> <i id class="ri-file-line"></i> <%= filesdupe.name %></h4></a> <div id="hicn"><i class="ri-pencil-line"></i>
+            <a href="/deletefile/<%= filesdupe.name %>"><i class="ri-delete-bin-line"></i></div></a>
+        </div>
+          <% } %>
+          <% }) %>
+        </div>
+  
+          
+          
+
+        <!-- <div id="item1"><i id class="ri-file-line"></i> <h4>ABCD.html</h4></div> 
+        <div id="item2"><i id class="ri-folder-line"></i> <h4>something.html</h4></div> -->
+
+      </div>
+      </div>
+    
+    <div id="right">
+      <div id="navr">
+       <!-- <div id="file1">
+          <div id="opened"><%= filesdupe.name %><i class="ri-close-line"></i></div>
+        </div>
+        
+      </div> -->
+      <small>Nothing to show here.</small>
+    </div>
+  </div>
+
+
+  <script>
+
+function onandoff(){
+        document.querySelectorAll("form").forEach(function(e){
+          e.style.display='none';}
+       ) }
+
+     document.querySelector("#fileicon").addEventListener("click",function(){
+      onandoff()
+        document.querySelector("#fileform").style.display="initial"
+      })
+
+      document.querySelector("#foldericon").addEventListener("click",function(){
+        onandoff()
+        document.querySelector("#folderform").style.display="initial"
+      })
+
+      window.addEventListener("keydown", function(e){
+        if(e.keyCode === 27){
+          console.log("key pressed");
+          onandoff();
+          document.querySelectorAll(".forms input").forEach(function(ele){
+            ele.value = "";
+          })
+        }
+       })
+
+  </script>
+</body>
+</html>

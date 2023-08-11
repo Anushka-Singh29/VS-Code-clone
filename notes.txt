@@ -1,0 +1,9 @@
+create a route with /file/:filename
+then get data of file through fs.readfile(`./uploads/${req.params.filename}`, "utf-8")
+res.render("index", {data});
+
+ctrl shift s  new file copy
+files show karna, index me file ka naam dena then usme ka data dikhana
+
+
+
